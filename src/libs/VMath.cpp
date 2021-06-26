@@ -75,23 +75,21 @@ double** GetZRotationMatrix(int degrees){
 
 double** CreateVectorObject(int x,int y,int z,int vectorCount){
     double** VectorArray = 0;
+    vectorCount++;
     VectorArray = new double*[vectorCount];
+
+    VectorArray[0] = new double[3];
+    VectorArray[0][0] = x;
+    VectorArray[0][1] = y;
+    VectorArray[0][2] = z;
     
-    for (int h = 0; h < vectorCount; h++)
+    for (int h = 1; h < vectorCount; h++)
     {
-        if(h == 0){
-            VectorArray[h] = new double[3];
-            VectorArray[h][0] = x;
-            VectorArray[h][1] = y;
-            VectorArray[h][2] = z;
-        }
-        else{
-            VectorArray[h] = new double[3];
+        VectorArray[h] = new double[3];
         
-            for (int w = 0; w < 3; w++)
-            {
-                VectorArray[h][w] = 0;
-            }
+        for (int w = 0; w < 3; w++)
+        {
+            VectorArray[h][w] = 0;
         }
     }
     
